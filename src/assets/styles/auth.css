@@ -1,0 +1,43 @@
+.auth-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: #fbde92;
+}
+
+.auth-item {
+    width: 50%;
+    height: 100%;
+}
+
+.auth-pandit-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.people-form-container {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/om.png');
+}
+
+.people-form-container form {
+    width: 80%;
+    padding: 20px 30px;
+    background: rgba(251, 222, 146, 0.11);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+    border: 1px solid rgba(251, 222, 146, 0.3);
+}
+
+.auth-header{
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.auth-footer a{
+    color: red;
+}
