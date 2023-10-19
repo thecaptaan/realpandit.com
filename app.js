@@ -15,6 +15,9 @@ server.use(helmet({
       directives: {
         "script-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
         "img-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
+        "media-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
+        "font-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
+        "style-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
     },
     },
   }))
