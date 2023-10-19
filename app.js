@@ -10,7 +10,13 @@ const expressLayouts = require('express-ejs-layouts');
 const server = express();
 
 server.use(cors())
-server.use(helmet())
+server.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "script-src": ["'self'", "https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/"],
+      },
+    },
+  }))
 server.use(cookieParser())
 server.use(express.json())
 server.use(bodyParser.json())
