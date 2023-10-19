@@ -28,12 +28,6 @@ server.set('views', path.join(__dirname, 'src/views'))
 
 const PORT = process.env.PORT || 8080
 
-server.use(express.static(path.join(__dirname, 'src/assets/fonts')))
-server.use(express.static(path.join(__dirname, 'src/assets/videos')))
-server.use(express.static(path.join(__dirname, 'src/assets/scripts')))
-server.use(express.static(path.join(__dirname, 'src/assets/styles')))
-server.use(express.static(path.join(__dirname, 'src/assets/images')))
-
 const unAuth = require('./src/routers/unAuth')
 
 server.use(unAuth)
