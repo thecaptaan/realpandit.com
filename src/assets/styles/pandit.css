@@ -1,0 +1,41 @@
+.pandit-container {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/join-bg.png);
+}
+
+.pandit-item {
+    width: 60%;
+    height: 80vh;
+    padding: 20px 0;
+    background: rgba(101, 101, 101, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.8px);
+    -webkit-backdrop-filter: blur(3.8px);
+    border: 1px solid rgba(101, 101, 101, 0.3);
+}
+
+.pandit-item form {
+    width: 80%;
+}
+
+
+input {
+    color: #fff;
+}
+
+input::placeholder {
+    color: #fff;
+}
+.auth-footer a {
+    color: var(--orange);
+}
+@media screen and (max-width: 500px){
+    .pandit-item{
+        width: 95%;
+        height: fit-content;
+    }
+}
