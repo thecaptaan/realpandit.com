@@ -1,12 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/styles/main.css">
+    <title><%-title %></title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <%- body %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <div class="loading-screen cent">
+        <svg class="realpandit-loading-svg" width="643.164" height="73.244" viewBox="0 0 643.164 73.244"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#fc8107"
+                stroke-width=".75mm" fill="none" style="stroke:#fc8107;stroke-width:.75mm;fill:none">
+                <path
+                    d="M 48.779 45.362 L 64.844 73.243 L 43.457 73.243 L 29.492 49.024 L 19.336 49.024 L 19.336 73.243 L 0 73.243 L 0 0.001 L 30.957 0.001 A 52.558 52.558 0 0 1 38.226 0.476 Q 43.196 1.171 47.168 2.882 A 24.526 24.526 0 0 1 53.229 6.547 A 20.727 20.727 0 0 1 57.397 11.256 A 21.867 21.867 0 0 1 60.519 19.443 A 29.51 29.51 0 0 1 60.938 24.512 A 28.443 28.443 0 0 1 60.296 30.695 A 21.586 21.586 0 0 1 57.812 37.061 A 21.354 21.354 0 0 1 50.038 44.673 A 26.047 26.047 0 0 1 48.779 45.362 Z M 19.336 16.846 L 19.336 34.132 L 29.443 34.132 A 24.882 24.882 0 0 0 32.642 33.94 Q 36.131 33.487 38.208 31.959 Q 41.162 29.786 41.162 25.489 A 9.9 9.9 0 0 0 40.829 22.842 A 6.896 6.896 0 0 0 38.208 19.019 Q 35.254 16.846 29.443 16.846 L 19.336 16.846 Z"
+                    id="0" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 120.02 73.243 L 70.703 73.243 L 70.703 0.001 L 119.531 0.001 L 119.531 16.846 L 90.039 16.846 L 90.039 28.175 L 117.578 28.175 L 117.578 45.02 L 90.039 45.02 L 90.039 56.397 L 120.02 56.397 L 120.02 73.243 Z"
+                    id="1" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 149.902 60.206 L 145.166 73.243 L 124.902 73.243 L 153.516 0.001 L 173.779 0.001 L 202.344 73.243 L 182.08 73.243 L 177.344 60.206 L 149.902 60.206 Z M 163.623 22.462 L 156.055 43.36 L 171.24 43.36 L 163.623 22.462 Z"
+                    id="2" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 257.52 56.397 L 257.52 73.243 L 207.715 73.243 L 207.715 0.001 L 227.051 0.001 L 227.051 56.397 L 257.52 56.397 Z"
+                    id="3" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 282.715 73.243 L 263.379 73.243 L 263.379 0.001 L 290.088 0.001 Q 299.512 0.001 306.421 3.15 A 26.314 26.314 0 0 1 313.029 7.383 A 22.776 22.776 0 0 1 317.065 12.086 A 23.201 23.201 0 0 1 320.489 21.411 A 30.314 30.314 0 0 1 320.801 25.831 A 28.487 28.487 0 0 1 319.931 33.016 A 22.814 22.814 0 0 1 317.065 39.625 A 23.919 23.919 0 0 1 308.155 47.799 A 29.326 29.326 0 0 1 306.494 48.634 A 32.963 32.963 0 0 1 298.273 51.156 Q 294.616 51.797 290.464 51.807 A 54.618 54.618 0 0 1 290.332 51.807 L 282.715 51.807 L 282.715 73.243 Z M 282.715 16.846 L 282.715 34.962 L 288.184 34.962 Q 292.125 34.962 294.892 34.03 A 10.829 10.829 0 0 0 297.729 32.618 A 7.557 7.557 0 0 0 300.953 27.104 A 10.823 10.823 0 0 0 301.025 25.831 A 9.037 9.037 0 0 0 300.568 22.885 A 7.389 7.389 0 0 0 297.705 19.166 Q 295.248 17.449 291.213 17.003 A 27.613 27.613 0 0 0 288.184 16.846 L 282.715 16.846 Z"
+                    id="4" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 345.313 60.206 L 340.576 73.243 L 320.313 73.243 L 348.926 0.001 L 369.189 0.001 L 397.754 73.243 L 377.49 73.243 L 372.754 60.206 L 345.313 60.206 Z M 359.033 22.462 L 351.465 43.36 L 366.65 43.36 L 359.033 22.462 Z"
+                    id="5" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 471.582 0.001 L 471.582 73.243 L 448.828 73.243 L 422.461 29.786 L 422.461 73.243 L 403.125 73.243 L 403.125 0.001 L 425.879 0.001 L 452.246 43.604 L 452.246 0.001 L 471.582 0.001 Z"
+                    id="6" vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 507.275 73.243 L 481.348 73.243 L 481.348 0.001 L 507.275 0.001 A 64.141 64.141 0 0 1 518.482 0.933 A 46.877 46.877 0 0 1 530.151 4.542 A 38.017 38.017 0 0 1 539.962 11.024 A 33.589 33.589 0 0 1 545.288 17.31 Q 550.684 25.538 550.684 36.622 A 38.071 38.071 0 0 1 549.249 47.262 A 31.967 31.967 0 0 1 545.288 55.909 A 34.781 34.781 0 0 1 532.662 67.43 A 42.585 42.585 0 0 1 530.151 68.702 A 47.074 47.074 0 0 1 518.119 72.374 A 64.501 64.501 0 0 1 507.275 73.243 Z M 500.684 16.846 L 500.684 56.397 L 507.91 56.397 A 39.937 39.937 0 0 0 513.46 56.033 Q 516.381 55.622 518.839 54.75 A 21.87 21.87 0 0 0 520.459 54.102 A 18.105 18.105 0 0 0 525.329 50.957 A 15.988 15.988 0 0 0 528.247 47.388 A 18.027 18.027 0 0 0 530.452 41.548 A 25.28 25.28 0 0 0 530.908 36.622 A 25.595 25.595 0 0 0 530.469 31.755 Q 529.872 28.673 528.465 26.201 A 16.002 16.002 0 0 0 528.247 25.831 Q 525.586 21.436 520.459 19.141 Q 516.013 17.151 509.841 16.887 A 45.139 45.139 0 0 0 507.91 16.846 L 500.684 16.846 Z"
+                    id="7" vector-effect="non-scaling-stroke" />
+                <path d="M 577.832 73.243 L 577.832 0.001 L 558.496 0.001 L 558.496 73.243 L 577.832 73.243 Z" id="8"
+                    vector-effect="non-scaling-stroke" />
+                <path
+                    d="M 622.852 16.846 L 622.852 73.243 L 603.516 73.243 L 603.516 16.846 L 583.203 16.846 L 583.203 0.001 L 643.164 0.001 L 643.164 16.846 L 622.852 16.846 Z"
+                    id="9" vector-effect="non-scaling-stroke" />
+            </g>
+        </svg>
+    </div>
+    <style>
+        .loading-active {
+            z-index: 1000;
+            position: absolute;
+            display: flex !important;
+        }
+
+        .loading-screen {
+            width: 100%;
+            height: 100vh;
+            display: none;
+            overflow: hidden;
+            background-color: rgba(255, 238, 226);
+        }
+
+        .realpandit-loading-svg {
+            /* color: var(--light-orange); */
+            stroke-dashoffset: 0;
+            stroke-dasharray: 1000;
+        }
+
+        @media screen and (max-width: 600px) {
+            .realpandit-loading-svg {
+                width: 95%;
+                /* font-size: 80px !important; */
+            }
+
+            .realpandit-loading-svg #svgGroup {
+                font-size: 70px !important;
+            }
+
+        }
+    </style>
+
+    <script type="module">
+        anime({
+            targets: '.realpandit-loading-svg path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1500,
+            delay: function (el, i) { return i * 250 },
+            direction: 'alternate',
+            loop: false
+        });
+    </script>
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                    ".loading-screen").classList.add("loading-active");
+                document.querySelector('#root').style.display = 'none';
+                setInterval('',5000)
+            } else {
+                document.querySelector(
+                    ".loading-screen").classList.remove("loading-active");
+                document.querySelector('#root').style.display = 'block';
+            }
+        }
+    </script>
+    <div id="root">
+        <%- body %>
+    </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+    integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+<script type="module">
+    AOS.init();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
+  integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </html>

@@ -1,0 +1,203 @@
+<!-- Modals -->
+<!-- Add Admin Modal -->
+<% if(tokenProfile.adminType === 'admin') { %>
+<div class="modal__container display cent" id="addAdminModal">
+    <div  class="modal__item col cent">
+        <div class="modal__header cent">
+            <h1>Add Admin</h1>
+        </div>
+        <div class="modal__body">
+            <form action="" method="post">
+                <div class="input-core">
+                    <input type="text" class="input" placeholder="First Name">
+                </div>
+                <div class="input-core">
+                    <input type="text" class="input" placeholder="Last Name">
+                </div>
+                <div class="input-core">
+                    <select name="" id="" class="select">
+                        <option value="">Choose an option</option>
+                        <option value="">Admin</option>
+                        <option value="">Management</option>
+                    </select>
+                </div>
+                <div class="input-core">
+                    <input type="password" class="input" placeholder="Password">
+                </div>
+                <button class="button" >Add A New Admin</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<div class="management__header">
+    <div>
+        <h1>Management</h1>
+    </div>
+    <% if(tokenProfile.adminType === 'admin') { %>
+        <div>
+            <button class="button" id="addAdminBtn">Add Admin</button>
+        </div>
+    <% } %>
+</div>
+<div class="admin__table__container">
+    <table class="admin__table">
+        <thead>
+            <tr>
+                <th>Admin Name</th>
+                <th>Admin Email</th>
+                <th>Admin Phone No</th>
+                <th>Admin Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(admins.length === 0){ %>
+                <h3>No Admin Found</h3>
+            <% } %>
+            <%  if(admins.length >= 1) { %>
+                <% for(let m = 0; m < admins.length; m++){ %>
+                    <tr>
+                        <td><%= admins[m].firstName %> <%=admins[m].lastName %></td>
+                        <td><%= admins[m].email %></td>
+                        <td><%= admins[m].phoneNo %></td>
+                        <td><%= admins[m].type %></td>
+                        <td>
+                            <button class="">Edit</button>
+                            <button class="">Delete</button>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } %>
+            
+        </tbody>
+    </table>
+</div>
+
+<div class="change__password">
+
+</div>
+<div class="add__admin"></div>
+
+<div class="delete__admin"></div>
+
+<style>
+    .modal__container {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: rgba(0, 0, 0, .5);
+        display: flex;
+    }
+    .display{
+        display: none;
+    }
+    .modal__item{
+        width: 60%;
+        height: fit-content;
+        border-radius: 5px;
+        padding: 50px 0;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .modal__header{
+        width: 100%;
+        height: 80px;
+    }
+    .modal__body{
+        width: 90%;
+        height: fit-content;
+        padding: 20px;
+    }
+     .management__header {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .management__search__container{
+        flex: 0.5;
+    }
+
+
+    .quick__look__information {
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+    }
+
+    .small__card {
+        width: 200px;
+        height: 100px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .small__card__header {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f1f1f1;
+    }
+
+    .small__card__body {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .small__card__body p {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .admin__table{
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+    }
+    .admin__table tr td{
+        text-align: center;
+        border: collapse;
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+    .admin__table tr td button{
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .admin__table tr:nth-child(1){
+        background-color: #f1f1f1;
+    }
+
+</style>
+
+<script>
+    const modalContainer = document.querySelector('.modal__container');
+    modalContainer.addEventListener("click", e=>{
+        console.log(e.target.classList.contains('modal__container'));
+        e.target.classList.contains('modal__container') ? modalContainer.classList.toggle('display') : null;
+    })
+
+    let addAdminBtn = document.getElementById('addAdminBtn')
+    let addAdminModal = document.getElementById('addAdminModal')
+    addAdminBtn.addEventListener('click', e =>{
+        console.log('clicked');
+        addAdminModal.classList.toggle('display')
+    })
+</script>

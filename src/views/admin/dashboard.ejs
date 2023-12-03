@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.css">
+<div class="dashboard__main__container">
+    <aside class="dashboard__aside__nav col">
+        <div class="aside__header cent">
+            <h1>Admin</h1>
+        </div>
+        <div class="aside__nav__link__container">
+            <ul class="aside__nav__link__item">
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/dashboard.svg" alt="">
+                    <a href="/kUXgr2p">Home</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/users.svg" alt="">
+                    <a href="/kUXgr2p/users">Users</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/user.svg" alt="">
+                    <a href="/kUXgr2p/pandits">Pandits</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/complain.svg" alt="">
+                    <a href="/kUXgr2p/pandits">Complains</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/complain.svg" alt="">
+                    <a href="/kUXgr2p/contact">Contact</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/cog.svg" alt="">
+                    <a href="/kUXgr2p/management">Management</a>
+                </li>
+                <li class="aside__nav__link row">
+                    <img class="aside__nav__link__img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/logout.svg" alt="">
+                    <a href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="dashboard__main__item">
+        <% if(urlRoute==="kUXgr2p" ) { %>
+            <%- include('./index.ejs') %>
+                <% } else if(urlRoute==="users" ) { %>
+                    <%- include('./users.ejs') %>
+                        <% } else if(urlRoute==="pandits" ) { %>
+                            <%- include('./pandits.ejs') %>
+                                <% } else if(urlRoute==="management" ) { %>
+                                    <%- include('./management.ejs') %>
+                                        <% } else if (urlRoute === "contact") { %>
+                                            <%- include('./contact.ejs') %>
+                                                <% } else if(urlRoute === "contactDetails"){ %>
+                                                    <%- include('./contactDetails.ejs') %>
+                                                <%}%>
+
+                                             
+                                                        
+
+    </div>
+</div>
+
+<style>
+    .dashboard__main__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .dashboard__aside__nav {
+        width: 300px;
+        height: 100%;
+        position: fixed;
+        align-items: center;
+        background-color: #f1f1f1;
+    }
+
+    .aside__header {
+        width: 100%;
+        height: 80px;
+        padding: 0 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #000;
+    }
+
+
+    .aside__nav__link__container {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #f1f1f1;
+    }
+
+    .aside__nav__link__item {
+        width: 100%;
+        list-style: none;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #f1f1f1;
+    }
+
+    .aside__nav__link {
+        width: 100%;
+        height: 50px;
+        padding: 20px;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #f1f1f1;
+    }
+
+    .aside__nav__link:hover {
+        background-color: #e1e1e1;
+    }
+
+    .aside__nav__link a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    .aside__nav__link__img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .dashboard__main__item {
+        width: 80%;
+        height: 100%;
+        padding: 0 20px;
+        margin-left: 300px;
+    }
+</style>

@@ -1,0 +1,177 @@
+<div class="index__header row">
+    <div class="row cent">
+        <h1>Home,</h1>
+    </div>
+    <div class="user__search__container">
+        <h3>
+            <%=tokenProfile.email %>
+        </h3>
+    </div>
+</div>
+<div class="quick__look__information row">
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total Count</h3>
+        </div>
+        <div class="small__card__body">
+            <p id="totalCount">
+            </p>
+        </div>
+    </div>
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total Active</h3>
+        </div>
+        <div class="small__card__body">
+            <p id="activeCount">
+
+            </p>
+        </div>
+    </div>
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total Suspended</h3>
+        </div>
+        <div class="small__card__body">
+            <p id="suspendedCount">
+
+            </p>
+        </div>
+    </div>
+</div>
+<div class="graph__collection row">
+    <div id="comparison" style="width: 600px;height:400px;"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"
+    integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"  
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script>
+    let users = <%- JSON.stringify(usersData) %>;
+    let pandits = <%- JSON.stringify(panditsData) %>;
+    console.log(users);
+    console.log(pandits);
+    let totalCount = users.length + pandits.length;
+    let activeCount = users.filter(user => user.accountActive === true).length + pandits.filter(pandit => pandit.accountActive === true).length;
+    let suspendedCount = users.filter(user => user.accountActive === false).length + pandits.filter(pandit => pandit.accountActive === false).length;
+    document.getElementById('totalCount').textContent = totalCount;
+    document.getElementById('activeCount').textContent = activeCount;
+    document.getElementById('suspendedCount').textContent = suspendedCount;
+    // six__month__data = users 
+
+    function findLastSixMonthData(data) {
+        const monthCounts = {};
+        for (let i = 6; i >= 1; i--) {
+            const targetMonth = moment().subtract(i, "months").format("MMMM");
+            monthCounts[targetMonth] = 0;
+        }
+        data.forEach((item) => {
+            const createdAtMoment = moment(item.createdAt);
+
+            if (
+                createdAtMoment.isAfter(moment().subtract(6, "months")) &&
+                createdAtMoment.isBefore(moment().startOf("month"))
+            ) {
+                const monthName = createdAtMoment.format("MMMM");
+                monthCounts[monthName] = 0;
+                monthCounts[monthName]++;
+            }
+        });
+        return monthCounts;
+    }
+    let sixMonthUsersData = findLastSixMonthData(users);
+    let sixMonthPanditsData = findLastSixMonthData(pandits);
+    console.log([sixMonthUsersData]);
+    console.log(sixMonthPanditsData);
+    var comparisonChart = echarts.init(document.getElementById('comparison'));
+    let option = {
+        title: {
+            text: 'User v/s Pandit Growth',
+            subtext: 'Data from last 6 months',
+            left: 'center'
+        },
+        tooltip: {},
+        xAxis: {
+            data: Object.keys(sixMonthUsersData)
+        },
+        yAxis: {},
+        series: [
+            {
+                data: Object.values(sixMonthUsersData),
+                type: 'line',
+                stack: 'x'
+            },
+            {
+                data:  Object.values(sixMonthPanditsData),
+                type: 'line',
+                stack: 'x'
+            }
+        ]
+    };
+    comparisonChart.setOption(option);
+</script>
+
+<style>
+    .index__header {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user__search__container {
+        width: fit-content;
+        padding: 10px 30px;
+        color: white;
+        border-radius: 5px;
+        background-color: var(--orange);
+    }
+
+
+    .quick__look__information {
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+    }
+
+    .small__card {
+        width: 200px;
+        height: 100px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .small__card__header {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f1f1f1;
+        /* background-color: rgb(87, 87, 228); */
+    }
+
+    .small__card__body {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .small__card__body p {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .graph__collection {
+        width: 100%;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        height: fit-content;
+        justify-content: space-between;
+    }
+</style>

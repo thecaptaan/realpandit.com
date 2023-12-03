@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/auth.css" />
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.css">
+<div class="auth-container row">
+  <div class="auth-item people-form-container cent">
+    <form action="">
+      <div class="auth-header cent">
+        <h1>Log In</h1>
+      </div>
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required />
+      <div class="input-core">
+        <input class="input" id="phoneNo" type="text" placeholder="0987654321" required />
+      </div>
+      <div class="input-core">
+        <input class="input" id="password" type="password" placeholder="Password" required />
+      </div>
+        <button class="button">Log In</button>
+        <div class="auth-footer cent">
+            <p>Create A New Account <a href="/user/people/signup">SignUp</a></p>
+        </div>
+    </form>
+  </div>
+  <div class="auth-item">
+    <img class="auth-pandit-img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/ganesh.jpg" alt="" />
+  </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcfvt4oAAAAAP1G2CSku64SplXM0ps-_2EkCIob"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
+  integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+  integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/people/login.js" type="module"></script>
+<script src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.js"></script>
+<%- include('../../layouts/FooterLayout') %>

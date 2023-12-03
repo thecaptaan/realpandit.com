@@ -1,0 +1,347 @@
+<div class="users__header row">
+    <div>
+        <h1>Users</h1>
+    </div>
+    <div class="user__search__container">
+        <form action="" method="get">
+            <div class="input-core">
+                <input class="input" type="text" name="search" id="search" placeholder="Search Users" required>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="quick__look__information row">
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total User</h3>
+        </div>
+        <div class="small__card__body">
+            <p>
+                <%= users.length %>
+            </p>
+        </div>
+    </div>
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total Active</h3>
+        </div>
+        <div class="small__card__body">
+            <p id="activeUsers">
+                
+            </p>
+        </div>
+    </div>
+    <div class="small__card">
+        <div class="small__card__header">
+            <h3>Total Suspend</h3>
+        </div>
+        <div class="small__card__body">
+            <p id="suspendedUser">
+                
+            </p>
+        </div>
+    </div>
+</div>
+<div class="users__container"></div>
+<div class="page__counter_container row">
+    <div>
+        <button class="counter__button" id="prevBtn" onclick="prevPage()">Prev</button>
+    </div>
+    <div class="row">
+        <div id="currentPage">1</div>/
+        <div id="totalPages">100</div>
+    </div>
+    <div><button class="counter__button" id="nextBtn" onclick="nextPage()">Next</button></div>
+</div>
+<script src="/toasty.min.js"></script>
+<script>
+</script>
+<style>
+    .users__header {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user__search__container {
+        flex: 0.5;
+    }
+
+
+    .quick__look__information {
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+    }
+
+    .small__card {
+        width: 200px;
+        height: 100px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .small__card__header {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f1f1f1;
+    }
+
+    .small__card__body {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .small__card__body p {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .user__card {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .user__img__container {
+        width: 100px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user__img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user__details__container {
+        height: 100%;
+        display: flex;
+        flex: .7;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .user__actions__container {
+        width: fit-content;
+        height: fit-content;
+        padding-right: 30px;
+    }
+
+    .action__option__container {
+        position: relative;
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: #f1f1f1;
+    }
+
+    .action__dropdown__content {
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 100%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        left: 0;
+        margin-top: 12px;
+    }
+
+    .action__dropdown__content button {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .action__dropdown__content button:hover {
+        background-color: #ddd;
+    }
+    .action__dropdown__item:hover .action__dropdown__content {
+        display: block;
+    }
+
+    .display {
+        display: none;
+    }
+
+    .page__counter_container {
+        width: 100%;
+        padding: 20px 0;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .counter__button {
+        width: 100px;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        color: #ffffff;
+        background-color: var(--light-orange) !important;
+    }
+</style>
+
+<script>
+    const users = <%- JSON.stringify(users) %>;
+    console.log(users)
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(users.length / itemsPerPage);
+    let currentPage = 1;
+
+    function displayData() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentData = users.slice(startIndex, endIndex);
+
+        const dataContainer = document.querySelector('.users__container');
+        let userHtml = (user) => `
+        <div class="user__card row">
+            <div class="user__img__container">
+                <img src="/${user.profileImg}" alt="" class="user__img">
+            </div>
+            <div class="user__details__container">
+                <h3>
+                    ${user.firstName}
+                    ${user.lastName}
+                </h3>
+                <p>${user.phoneNo}</p>
+            </div>
+            <div>
+                ${user.accountActive === false ?`<p class="red">Suspended</p> ` : '' }
+            </div>
+            <div class="user__actions__container col">
+                <div class="action__option__container">
+                    <div class="action__dropdown__item" onclick="()=>{
+                        toggleDropdown()
+                    }"> Options</div>
+                <div class="action__dropdown__content display">
+                    ${user.accountActive ?
+                        `<form action="/kUXgr2p/users/${user._id}/suspend" class="suspendAccount" method="post">
+                            <button type="submit">Suspend</button>
+                        </form>`
+                            :
+                        `<form action="/kUXgr2p/users/${user._id}/unsuspend" class="unSuspendAccount" method="post">
+                            <button type="submit">Unsuspend</button>
+                        </form>`
+                    }
+                    <form action="/users/${user._id}/delete" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>`
+    dataContainer.innerHTML = currentData.map((user) => {
+        return userHtml(user)
+    }).join('');
+    }
+
+    function updatePageInfo() {
+        const currentPageElement = document.getElementById('currentPage');
+        const totalPagesElement = document.getElementById('totalPages');
+
+        currentPageElement.textContent = currentPage;
+        totalPagesElement.textContent = totalPages;
+    }
+
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayData();
+            updatePageInfo();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayData();
+            updatePageInfo();
+        }
+    }
+
+    displayData();
+    updatePageInfo();
+</script>
+<script>
+    let toast = new Toasty();
+    let actionDropdown = document.querySelectorAll('.action__dropdown__item');
+    let actionDropdownContent = document.querySelectorAll('.action__dropdown__content');
+    let suspendAccount = document.querySelectorAll('.suspendAccount');
+    let unSuspendAccount = document.querySelectorAll('.unSuspendAccount');
+        
+    function toggleDropdown(event) {
+        const target = event.target;
+        console.log(target)
+        const dropdownContent = target.nextElementSibling; // Assuming it's a sibling in your structure
+
+        if (target.classList.contains('action__dropdown__item')) {
+            dropdownContent.classList.toggle('display');
+        }
+    }
+
+    // Attach a single event listener to a common parent element
+    document.body.addEventListener('click', toggleDropdown);
+
+    for (let i = 0; i < suspendAccount.length; i++) {
+        suspendAccount[i].addEventListener('submit', (e) => {
+            e.preventDefault();
+            let confirmSuspend = confirm('Are you sure you want to suspend this account?');
+            if (confirmSuspend) {
+                axios.post(suspendAccount[i].action)
+                    .then((res) => {
+                        if (res.data.success) {
+                            window.location.reload();
+                        }
+                    })
+                    .catch((err) => {
+                        toast.error(err.response.data.message);
+                    })
+            }
+        })
+    }
+    for(let i = 0; i < unSuspendAccount.length; i++){
+        unSuspendAccount[i].addEventListener('submit', (e) => {
+            e.preventDefault();
+            let confirmUnsuspend = confirm('Are you sure you want to unsuspend this account?');
+            if (confirmUnsuspend) {
+                axios.post(unSuspendAccount[i].action)
+                    .then((res) => {
+                        if (res.data.success) {
+                            window.location.reload();
+                        }
+                    })
+                    .catch((err) => {
+                        toast.error(err.response.data.message);
+                    })
+            }
+        })
+    }
+
+    let activeUsers = users.filter((user) => {
+        return user.accountActive === true;
+    })
+    let suspendedUsers = users.filter((user) => {
+        return user.accountActive === false;
+    })
+    document.getElementById('activeUsers').textContent = activeUsers.length;
+    document.getElementById('suspendedUser').textContent = suspendedUsers.length;
+</script>

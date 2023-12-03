@@ -1,0 +1,83 @@
+<div class="admin__auth row cent">
+    <div class="admin__item">
+        <form action="/kUXgr2p/signin" method="post" id="adminSignInForm">
+            <div class="admin__auth__header cent">
+                <div class="col">
+                    <h4 class="blue">Sign In</h4>
+                    <h2>Welcome to Admin Panel</h2>
+                </div>
+            </div>
+            <div class="admin__error">
+                <p id="error__text"></p>
+            </div>
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required />
+            <div class="input-core">
+                <input class="input" id="adminEmail" type="email" placeholder="admin@example.com" required />
+            </div>
+            <div class="input-core">
+                <input class="input" id="adminPassword" type="password" placeholder="Password" required />
+            </div>
+            <button class="button">Sign In</button>
+        </form>
+    </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcfvt4oAAAAAP1G2CSku64SplXM0ps-_2EkCIob"></script>
+
+<style>
+    .admin__auth {
+        width: 100%;
+        height: 100vh;
+        background-color: #f1f1f1;
+    }
+
+    .admin__item {
+        width: 500px;
+        height: fit-content;
+        padding: 50px 30px;
+        border-radius: 5px;
+        background-color: #ffffff;
+    }
+
+    .admin__auth__header {
+        padding: 20px 0;
+    }
+
+    .admin__auth__header .blue {
+        color: blueviolet;
+    }
+
+    .admin__error {
+        color: red;
+        padding: 10px 0;
+        display: none;
+    }
+</style>
+<script>
+    const errorText = document.querySelector('#error__text');
+    const adminEmail = document.querySelector('#adminEmail');
+    const adminPassword = document.querySelector('#adminPassword');
+    const gReCaptcha = document.querySelector('#g-recaptcha-response');
+    const adminSignInForm = document.querySelector('#adminSignInForm');
+    adminSignInForm.addEventListener('submit', e => {
+        e.preventDefault();
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6Lcfvt4oAAAAAP1G2CSku64SplXM0ps-_2EkCIob', { action: 'submit' }).then(function (token) {
+                gReCaptcha.value = token;
+
+                axios.post('/kUXgr2p/signin', {
+                    email: adminEmail.value,
+                    password: adminPassword.value,
+                    gReCaptcha: gReCaptcha.value
+                }).then(res => {
+                    if (res.data.status === 'success') {
+                        window.location.href = '/kUXgr2p';
+                    } else {
+                        errorText.innerHTML = res.data.message;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            });
+        });
+    })
+</script>

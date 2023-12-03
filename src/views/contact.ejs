@@ -1,18 +1,74 @@
-<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/styles/contact.css">
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/contact.css">
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.css">
 <%- include('layouts/NavLayout') %>
-<div class="contact-container cent">
-    <div class="contact-item">
-        <div class="contact-header">
-            <h1>Contact Us</h1>
+    <div class="contact-container row">
+        <div class="contact-item contact-map-container cent">
+            <iframe title="Ajmer, Rajasthan"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114306.49103862917!2d74.55331154196566!3d26.453219567583297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1701233438083!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div class="row">
-            <div>
-
-            </div>
-            <div>
-                
-            </div>
+        <div class="contact-item contact-form-container col cent">
+            <h1 class="contact-title">Contact Us</h1>
+            <form action="" method="post" class="contact-form">
+                <div class="input-core row">
+                    <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/user.svg" width="25" alt="">
+                    <input type="text" class="input" id="fullName" placeholder="Full Name" required>
+                </div>
+                <div class="input-core row">
+                    <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/email.svg" width="25" alt="">
+                    <input type="text" class="input" id="email" placeholder="jhon@example.com" required>
+                </div>
+                <div class="input-core row">
+                    <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/id.svg" width="25" alt="">
+                    <input type="text" class="input" id="position" placeholder="CEO, Manager, Marketing Head ..."
+                        required>
+                </div>
+                <textarea name="" id="message" class="textarea"></textarea>
+                <button class="button">
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
-</div>
-<%- include('layouts/FooterLayout') %>
+    <%- include('layouts/FooterLayout') %>
+        <script src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.js"></script>
+        <script>
+            let toastOption = {
+                duration: 5000,
+                progressBar: true
+            }
+            let toast = new Toasty(toastOption);
+            document.querySelector('.contact-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const fullName = document.querySelector('#fullName').value;
+                const email = document.querySelector('#email').value;
+                const position = document.querySelector('#position').value;
+                const message = document.querySelector('#message').value;
+                axios.post('/contact', {
+                    fullName,
+                    email,
+                    position,
+                    message
+                })
+                    .then(function (response) {
+                        document.querySelector('#fullName').value = '';
+                        document.querySelector('#email').value = '';
+                        document.querySelector('#position').value = '';
+                        document.querySelector('#message').value = '';
+                        console.log(response);
+                        toast.success('Message Sent');
+                    })
+                    .catch(function (error) {
+                        console.log(error.response);
+                        if(error.response.status === 400){
+                            toast.error(error.response.data.message);
+                        }else if(error.response.status === 500){
+                            toast.error('Internal Server Error');
+                        }
+                        else{
+                            toast.error('Message Not Sent');
+                        }
+                    });
+            })
+        </script>

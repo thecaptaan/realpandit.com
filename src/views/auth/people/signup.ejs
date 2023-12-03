@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/auth.css" />
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/signup.css">
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.css">
+<div class="auth-container row">
+  <div class="auth-item signup-image-container row cent">
+    <div class="cent">
+      <img class="banaras-pandit" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/pandit.jpg" alt="" />
+    </div>
+  </div>
+  <div class="auth-item people-form-container cent">
+    <form action="" id="create-people">
+      <div class="auth-header">
+        <h1>Sign Up</h1>
+      </div>
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" required />
+      <div class="dbl row">
+        <div class="input-core">
+          <input class="input" type="text" id="firstName" name="firstName" placeholder="First Name" required />
+        </div>
+        <div class="input-core">
+          <input class="input" type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+        </div>
+      </div>
+      <div class="input-core">
+        <input class="input" type="text" id="phoneNo" name="phoneNo" placeholder="+91 9876054321" required />
+      </div>
+      <div class="input-core">
+        <input class="input" type="password" id="password" name="password" placeholder="Password" required />
+      </div>
+      <div class="input-core">
+        <input class="input" type="text" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+          required />
+      </div>
+      <div class="terms-privacy">
+        <label for="terms">By signing up, you agree to the <a href="/terms-condition">terms and conditions </a> and <a
+            href="/privacy-policy">privacy policy</a> of Real Pandit.</label>
+      </div>
+      <button class="button">Create A Account</button>
+      <div class="auth-footer cent">
+        <p>Already have an account? <a href="/user/people/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lcfvt4oAAAAAP1G2CSku64SplXM0ps-_2EkCIob"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
+  integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+  integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/people/signup.js" type="module"></script>
+<script src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/toasty.min.js"></script>
+<%- include('../../layouts/FooterLayout') %>

@@ -1,73 +1,283 @@
-<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/styles/index.css" />
+<link rel="stylesheet" href="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/css/splide.min.css"
+  integrity="sha512-KhFXpe+VJEu5HYbJyKQs9VvwGB+jQepqb4ZnlhUF/jQGxYJcjdxOTf6cr445hOc791FFLs18DKVpfrQnONOB1g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta name="description"
+  content="Find experienced pandits for pooja and marriage ceremonies. Book traditional Hindu priests online for ritualistic and auspicious occasions.">
+<meta name="keywords"
+  content="Pandit, Pooja, Puja, Ceremony, Hire Pandit, Marriage Pandit, Vedic Priest, Rituals, Puja Services, Hindu Priest, Book Pandit Online, Traditional Ceremonies">
 <!--  -->
 <%- include('layouts/NavLayout') %>
 
-<!--  -->
-<div class="index-banner">
-  <img class="banner-img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/images/city.png" alt="" />
-  <div class="banner-cover cent">
-    <div class="banner-main-container col cent">
-      <h1 class="landing-text">
-        Book Trusted Pandits for Your Sacred Ceremonies
-      </h1>
-      <div class="banner-search-form-container">
-        <form action="" method="get">
-          <div class="banner-search row cent">
-            <div class="banner-input-1 row">
-              <input
-                class="input-search"
-                type="text"
-                placeholder="Enter Your City"
-                required
-              />
-              <img class="input-svg" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/fonts/location.svg" alt="" />
+  <div class="index-banner">
+    <img class="banner-img" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com//city.png" alt="" />
+    <div class="banner-cover cent">
+      <div class="banner-main-container col cent">
+        <h1 class="landing-text">
+          Find Trusted Pandits for Your Holy Puja Paath
+        </h1>
+        <div class="banner-search-form-container">
+          <form action="" method="get">
+            <div class="banner-search row cent">
+              <div class="banner-input-1 row">
+                <input class="input-search" type="text" placeholder="Enter Your City" required />
+                <img class="input-svg" src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com//location.svg" alt="" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="counter-container cent row">
+    <div class="counter-item-container row">
+      <div class="counter-item">
+        <div class="counter" id="panditCounter">50+</div>
+        <div class="counterHeadline">Pandits</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter" id="citiesCounter">4</div>
+        <div class="counterHeadline">Cities</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter" id="userCounter">1000+</div>
+        <div class="counterHeadline">Users</div>
+      </div>
+    </div>
+  </div>
+  <div class="celebration-container cent row">
+    <div class="celebration-item col cent">
+      <div class="celebration-content">
+        <div class="celebration-header">
+          <h1>Celebration Should Not Stop</h1>
+        </div>
+        <div class="celebration-content-txt">
+          <p>
+            RealPandit understands the challenges of finding a pandit for rituals in metropolitan cities. We aim to
+            simplify this process, connecting you with experienced pandits to ensure your ceremonies are conducted
+            seamlessly. Your spiritual needs, met with convenience.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="celebration-item cent">
+      <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/celebration.png" class="celebration-img" alt="">
+    </div>
+  </div>
+  <div class="choose-us">
+    <div class="choose-header">
+      <h1>Why Choose Us?</h1>
+    </div>
+    <div class="choose-container row">
+      <% choose.forEach((choose)=> { %>
+        <div class="choose">
+          <div class="choose-img cent">
+            <img class="<%=choose.id == 2 ? 'trusted': '' %>" src="/<%= choose.image %>" alt="" />
+          </div>
+          <div class="choose-info">
+            <div class="choose-title">
+              <h3>
+                <%= choose.title %>
+              </h3>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--  -->
-<div class="featured-pandit">
-  <div class="featured-header">
-    <h1>Featured Pandits</h1>
-  </div>
-  <div class="pandit-card-container row">
-    <% panditData.forEach((pandit) => { %>
-    <div class="pandit-card">
-      <div class="pandit-card-img cent">
-        <img src="<%= pandit.image %>" alt="" />
-      </div>
-      <div class="pandit-card-info">
-        <div class="pandit-card-name">
-          <h3><%= pandit.name %></h3>
         </div>
-      </div>
+        <% }) %>
     </div>
-    <% }) %>
   </div>
-</div>
-    <!--  -->
-    <div class="aarti-container">
-      <video src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/realpandit/videos/aarti.mp4" class="aarti-video" autoplay loop muted>
-        video is not supported
-      </video>
-      <div class="aarti-main cent">
-        <div class="col">
-          <div class="cent">
-            <h1>Join As A Pandit</h1>
+  <!-- Ceremonies -->
+  <div class="ceremonies-container cent col">
+    <div class="ceremonies-header">
+      <h1>Ceremonies</h1>
+    </div>
+    <div class="ceremonies-main row">
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/aiganesh.png" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Ganesh Puja</h2>
           </div>
-          <div>
-            <button class="button">Log In</button>
-            <button class="button">Sign Up</button>
+          <div class="ceremonies-text-content cent">
+            Ganesh Puja is a vibrant Hindu festival celebrated with fervor, dedicated to Lord Ganesha, the remover of
+            obstacles, marked by elaborate rituals and colorful processions.
           </div>
         </div>
       </div>
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/chhath.jpg" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Chhath Puja</h2>
+          </div>
+          <div class="ceremonies-text-content cent">
+            Chhath Puja, a traditional Hindu festival, honors the Sun God and is characterized by rigorous fasting,
+            rituals, and offerings, as devotees express gratitude for the sustenance of life.
+          </div>
+        </div>
+      </div>
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/durgamaa.jpg" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Durga Puja</h2>
+          </div>
+          <div class="ceremonies-text-content cent">
+            Durga Puja, a grand Hindu festival, reveres Goddess Durga, celebrating her victory over the buffalo demon,
+            with elaborate decorations, cultural performances, and the immersion of beautifully crafted idols.
+          </div>
+        </div>
+      </div>
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/indian-wedding.jpg" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Wedding</h2>
+          </div>
+          <div class="ceremonies-text-content cent">
+            Indian Marriage, a sacred union, encompasses vibrant traditions, rituals, and celebrations, symbolizing the
+            union of two individuals and their families in a bond of love and commitment.
+          </div>
+        </div>
+      </div>
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/banaras.jpg" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Ganga Aarti</h2>
+          </div>
+          <div class="ceremonies-text-content cent">
+            Ganga Aarti, a spiritual ritual performed on the banks of the river Ganges, involves the rhythmic chanting
+            of hymns, the waving of lamps, and the offering of prayers.
+          </div>
+        </div>
+      </div>
+      <div class="ceremonies">
+        <div class="ceremonies-img cent">
+          <img src="https://elasticbeanstalk-ap-south-1-679122753279.s3.ap-south-1.amazonaws.com/other-pandit.jpg" alt="" />
+        </div>
+        <div class="ceremonies-text">
+          <div class="ceremonies-text-header">
+            <h2>Other Ceremonies</h2>
+          </div>
+          <div class="ceremonies-text-content cent">
+            Various other pujas in India, like Saraswati Puja and Laxmi Puja, highlight devotion to different deities,
+            each with unique rituals and customs, enriching the cultural tapestry of the country.
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!--  -->
-    <%- include('layouts/FooterLayout') %>
   </div>
-</div>
+
+  <div class="client-review-container col cent">
+    <h1 id="carousel-heading">Users About Us</h1>
+    <section class="splide review-main" role="group" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="review">
+              <div class="review-description">
+                <p>A seamless Saraswati Puja experience! The pandit recommended by the platform was knowledgeable, and
+                  the arrangements were flawless.
+                </p>
+              </div>
+              <div class="reviewer-details">
+                <h4>Priya Sharma</h4>
+                <h5>User</h5>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="review">
+              <div class="review-description">
+                <p>Diwali became more meaningful with RealPandit's assistance. The pandit's attention to detail and the
+                  organized rituals were commendable.</p>
+              </div>
+              <div class="reviewer-details">
+                <h4>Vikram Thakur</h4>
+                <h5>User</h5>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="review">
+              <div class="review-description">
+                <p>Laxmi Puja was a joyous occasion, thanks to RealPandit's coordination. The pandit was accommodating,
+                  creating a spiritually uplifting atmosphere.</p>
+              </div>
+              <div class="reviewer-details">
+                <h4>Aman Verma</h4>
+                <h5>User</h5>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="review">
+              <div class="review-description">
+                <p> Our Navratri Puja was a success with RealPandit's services. The dedicated pandit and timely rituals
+                  added to the spiritual richness of the occasion.</p>
+              </div>
+              <div class="reviewer-details">
+                <h4>Jatin Chaudhary</h4>
+                <h5>User</h5>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <%- include('layouts/FooterLayout') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/splidejs/4.1.4/js/splide.min.js"
+      integrity="sha512-4TcjHXQMLM7Y6eqfiasrsnRCc8D/unDeY1UGKGgfwyLUCTsHYMxF7/UHayjItKQKIoP6TTQ6AMamb9w2GMAvNg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+      </script>
+    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
+    <script>
+      function counter(id, no) {
+        const options = {
+          suffix: '+',
+        };
+        let counter = new countUp.CountUp(id, no, options);
+        if (!counter.error) {
+          counter.start();
+        } else {
+          let counterId = document.getElementById(id).innerText = no;
+        }
+      }
+      counter('panditCounter', 50);
+      counter('citiesCounter', 4);
+      counter('userCounter', 1000);
+    </script>
+    <script type="module">
+
+      let splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        autoplay: true,
+        interval: 2000,
+        breakpoints: {
+          768: {
+            perPage: 1,
+            fixedWidth: '100%',
+            pagination: false,
+            cover: true,
+          }
+        }
+      });
+
+      splide.mount();
+    </script>
+
+    </div>
+    </div>
